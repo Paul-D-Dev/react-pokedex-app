@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 import Pokemon from "../models/pokemon";
 import "./pokemon-card.css"
+import formatDate from '../helpers/format-date'
 
 type Props = {
     pokemon: Pokemon;
@@ -14,10 +15,7 @@ const PokemonCard : FunctionComponent<Props> = ({pokemon, borderColor = "#009688
     const showBorder = () => setColor(borderColor);
     const hideColor = () => setColor('#F5F5F5');
 
-    // date.getMonth + 1 because January = Month 0
-    const formatDate = (date: Date): string => {
-        return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
-    }
+
 
     const formatType = (type: string): string => {
         let color: string;
