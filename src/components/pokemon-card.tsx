@@ -1,16 +1,35 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import Pokemon from "../models/pokemon";
+import "./pokemon-card.css"
 
 type Props = {
-    pokemon: Pokemon
+    pokemon: Pokemon;
 }
 
-const PokemonCard = ({pokemon}) => {
+const PokemonCard : FunctionComponent<Props> = ({pokemon}) => {
     
     
     return (
         <div>
-            Ce composant s'occupe d'affichier le pokémon = {pokemon.name}
+            <div className="col s6 m4">
+
+                <div className="card horizontal">
+
+                    <div className="card-image">
+                    <img src={pokemon.picture} alt={pokemon.name}/>
+                    </div>
+
+                    <div className="card-stacked">
+                        <div className="card-content">
+                            <p>{pokemon.name}</p>
+                            <p><small>{pokemon.created.toString()}</small></p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
     )
 }
