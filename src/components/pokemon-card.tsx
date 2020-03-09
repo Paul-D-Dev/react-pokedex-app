@@ -4,16 +4,17 @@ import "./pokemon-card.css"
 
 type Props = {
     pokemon: Pokemon;
+    borderColor?: string
 }
 
-const PokemonCard : FunctionComponent<Props> = ({pokemon}) => {
+const PokemonCard : FunctionComponent<Props> = ({pokemon, borderColor = "009688"}) => {
     
     
     return (
         <div>
             <div className="col s6 m4">
 
-                <div className="card horizontal">
+                <div className="card horizontal" style = {{borderColor: borderColor}}>
 
                     <div className="card-image">
                     <img src={pokemon.picture} alt={pokemon.name}/>
