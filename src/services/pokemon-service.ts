@@ -22,16 +22,20 @@ export default class PokemonService {
       }
   }
 
-  static addPokemeon(pokemon: Pokemon): Promise<Pokemon> {
+  static async addPokemeon(pokemon: Pokemon): Promise<Pokemon> {
     delete pokemon.created; // on supprime la propriété created car c'est notre format-date qui s'en occupe
 
-    return fetch(`http://localhost:3001/pokemons/create`, {
-        method: 'POST',
-        body: JSON.stringify(pokemon),
-        headers: { 'Content-type': 'application/json' }
-    })
-    .then(response => response.json())
-    .catch(error => this.handleError(error))
+    try {
+          const response = await fetch(`http://localhost:3001/pokemons/create`, {
+              method: 'POST',
+              body: JSON.stringify(pokemon),
+              headers: { 'Content-type': 'application/json' }
+          });
+          return await response.json();
+      }
+      catch (error) {
+          return this.handleError(error);
+      }
   }
 
   static async updatePokemon(pokemon: Pokemon): Promise<Pokemon> {
