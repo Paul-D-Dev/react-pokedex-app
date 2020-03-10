@@ -28,14 +28,25 @@ export default class PokemonService {
               method: 'PUT',
               body: JSON.stringify(pokemon),
               headers: { 'Content-Type': 'application/json' } // l'application sait qu'on envoie du json
-          });
-          return await response.json();
-      }
-      catch (error) {
-          return this.handleError(error);
-      }
-  }
- 
+            });
+            return await response.json();
+        }
+        catch (error) {
+            return this.handleError(error);
+        }
+    }
+    
+    // Promise an empty object
+    static deletePokemont(pokemon: Pokemon): Promise<{}> {
+        return fetch(`http://localhost:3001/pokemons/${pokemon.id}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' } // l'application sait qu'on envoie du json
+        })
+        .then(response => response.json())
+        .catch(error => this.handleError(error))
+
+    }
+  
   static isEmpty(data: Object): boolean {
     return Object.keys(data).length === 0;
   }
