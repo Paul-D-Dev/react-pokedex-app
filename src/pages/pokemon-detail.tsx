@@ -3,6 +3,7 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import formatDate from '../helpers/format-date';
 import formatType from '../helpers/format-type';
 import Pokemon from '../models/pokemon';
+import PokemonService  from "../services/pokemon-service";
   
 
 // Params in URL
@@ -19,11 +20,8 @@ const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
   
 
   useEffect(() => {
-    fetch(`http://localhost:3001/pokemons/${match.params.id}`)
-    .then(response => response.json())
-    .then(pokemon => {
-      if (pokemon.id) setPokemon(pokemon)
-    })
+    // match.params.id = string -> opérateur + convert in number
+    PokemonService.getPokemon(+match.params.id).then(pokemon => setPokemon(pokemon))
   }, [match.params.id]);
     
   return (
