@@ -166,7 +166,7 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon, isEditForm}) => {
   }
 
   const addPokemon = () => {
-    PokemonService.addPokemeon(pokemon).then(() => history.push('/pokemons'))
+    PokemonService.addPokemon(pokemon).then(() => history.push('/pokemons'))
   }
   const updatePokemon = () => {
     PokemonService.updatePokemon(pokemon).then(() => history.push(`/pokemons/${pokemon.id}`))
