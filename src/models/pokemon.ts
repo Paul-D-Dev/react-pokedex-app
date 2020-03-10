@@ -13,8 +13,8 @@ export default class Pokemon {
      id: number,
      hp: number = 100,
      cp: number = 10,
-     name: string = 'name',
-     picture: string = 'http://...',
+     name: string = '',
+     picture: string = 'https://asset.pokemon.com/assets/cm2/img/pokedex/detail/',
      types: Array<string> = ['Normal'],
      created: Date = new Date()
     ) {
