@@ -6,6 +6,7 @@ import PokemonCreate from "./pages/pokemon-create";
 import PokemonsDetail from "./pages/pokemon-detail";
 import PokemonEdit from "./pages/pokemon-edit";
 import PokemonList from "./pages/pokemon-list";
+import PrivateRoute from './PrivateRoute';
 
 function App() {
 
@@ -23,13 +24,13 @@ function App() {
           {/* Switch permet d'afficher le contenu de la route une seule fois */}
           {/* React lit les routes de haut en bas, il faut donc mettre la page not found en dernier */}
           <Switch> 
-            <Route exact path="/" component={PokemonList}></Route>
-            <Route exact path="/login" component={Login}></Route>
-            <Route exact path="/pokemons" component={PokemonList}></Route>
-            <Route exact path="/pokemon/create" component={PokemonCreate}></Route>
-            <Route exact path="/pokemons/edit/:id" component={PokemonEdit}></Route>
-            <Route path="/pokemons/:id" component={PokemonsDetail}></Route>
-            <Route component={PageNotFound}></Route>
+            <PrivateRoute exact path="/" component={PokemonList} />
+            <Route exact path="/login" component={Login} />
+            <PrivateRoute exact path="/pokemons" component={PokemonList} />
+            <PrivateRoute exact path="/pokemon/create" component={PokemonCreate} />
+            <PrivateRoute exact path="/pokemons/edit/:id" component={PokemonEdit} />
+            <PrivateRoute path="/pokemons/:id" component={PokemonsDetail} />
+            <Route component={PageNotFound} />
           </Switch>
       </div>
     </Router>
