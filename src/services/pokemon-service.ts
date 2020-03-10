@@ -37,13 +37,17 @@ export default class PokemonService {
     }
     
     // Promise an empty object
-    static deletePokemont(pokemon: Pokemon): Promise<{}> {
-        return fetch(`http://localhost:3001/pokemons/${pokemon.id}`, {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' } // l'application sait qu'on envoie du json
-        })
-        .then(response => response.json())
-        .catch(error => this.handleError(error))
+    static async deletePokemont(pokemon: Pokemon): Promise<{}> {
+        try {
+            const response = await fetch(`http://localhost:3001/pokemons/${pokemon.id}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' } // l'application sait qu'on envoie du json
+            });
+            return await response.json();
+        }
+        catch (error) {
+            return this.handleError(error);
+        }
 
     }
   
