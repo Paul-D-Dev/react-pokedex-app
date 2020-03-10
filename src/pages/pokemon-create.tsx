@@ -8,7 +8,7 @@ const PokemonCreate: FunctionComponent = () => {
 
     return (
         <div className="row">
-            <h2>Ajouter un Pokémon</h2>
+            <h2 className="center">Ajouter un Pokémon</h2>
             <PokemonForm pokemon={pokemon} isEditForm={false}></PokemonForm>
         </div>
     )
