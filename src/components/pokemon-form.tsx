@@ -142,6 +142,9 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
     return true;
   }
 
+  const deletePokemon = () => {
+    PokemonService.deletePokemon(pokemon).then(() => history.push('/pokemons'))
+  }
   return (
     <form onSubmit={e => handleSubmit(e)}>
       <div className="row">
@@ -149,6 +152,9 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
           <div className="card hoverable"> 
             <div className="card-image">
               <img src={pokemon.picture} alt={pokemon.name} style={{width: '250px', margin: '0 auto'}}/>
+              <span className="btn btn-floating halfway-fab waves-effect waves-light">
+                <i onClick={deletePokemon} className="material-icons">delete</i>
+              </span>
             </div>
             <div className="card-stacked">
               <div className="card-content">

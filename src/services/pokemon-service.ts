@@ -37,7 +37,7 @@ export default class PokemonService {
     }
     
     // Promise an empty object
-    static async deletePokemont(pokemon: Pokemon): Promise<{}> {
+    static async deletePokemon(pokemon: Pokemon): Promise<{}> {
         try {
             const response = await fetch(`http://localhost:3001/pokemons/${pokemon.id}`, {
                 method: 'DELETE',
