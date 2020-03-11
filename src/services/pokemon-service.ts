@@ -119,7 +119,7 @@ export default class PokemonService {
     }
   
     return new Promise(resolve => {    
-      const results = this.pokemons.filter(pokemon => pokemon.name.includes(term));
+      const results = this.pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(term));
       resolve(results);
     });
   
